@@ -2,7 +2,8 @@ import './App.css'
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-const apiUrl = 'https://your-json-server.herokuapp.com/employees';
+const apiUrl = 'https://your-deployed-api.com/employees';
+
 
 
 function EmployeeManagementApp() {
