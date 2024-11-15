@@ -2,7 +2,8 @@ import './App.css'
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-const apiUrl = 'http://localhost:5001/employees';
+const apiUrl = 'https://your-json-server.herokuapp.com/employees';
+
 
 function EmployeeManagementApp() {
   const [employees, setEmployees] = useState([]);
@@ -32,18 +33,19 @@ function EmployeeManagementApp() {
     setFormData({ ...formData, [name]: value });
   };
 
-  const addEmployee = async () => {
+ const addEmployee = async () => {
     const { id, ...newEmployeeData } = formData;
-
+    
     try {
       const response = await axios.post(apiUrl, newEmployeeData);
-      console.log('Employee added:', response.data);  // Log response data
+      console.log('Employee added:', response.data);  
       fetchEmployees();
       resetForm();
     } catch (error) {
-      console.error('Error adding employee:', error);
+      console.error('Error adding employee:', error.response ? error.response.data : error.message);
     }
 };
+
 
 
   const editEmployee = (employee) => {
